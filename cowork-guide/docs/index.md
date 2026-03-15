@@ -235,14 +235,14 @@ onMounted(() => {
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #1a1a2e, #E87040);
+  background: linear-gradient(135deg, #2a2a2a, #E87040);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
 }
 .dark .section-title {
-  background: linear-gradient(135deg, #f0ece8, #F09060);
+  background: linear-gradient(135deg, #ececec, #E8845A);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -374,6 +374,10 @@ onMounted(() => {
   color: #c43052;
   margin-right: 4px;
 }
+.dark .badge-before {
+  background: rgba(240, 128, 144, 0.12);
+  color: #f08090;
+}
 .badge-after {
   display: inline-block;
   padding: 2px 8px;
@@ -383,6 +387,10 @@ onMounted(() => {
   background: rgba(13, 138, 94, 0.1);
   color: #0d8a5e;
   margin-right: 4px;
+}
+.dark .badge-after {
+  background: rgba(92, 216, 168, 0.12);
+  color: #5cd8a8;
 }
 
 /* ═══ Paths Section ═══ */
