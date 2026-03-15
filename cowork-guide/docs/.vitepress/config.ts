@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: '/claude-cowork-simple-guide/',
   title: 'Claude Cowork Guide',
   description: '일반 사무직 사용자를 위한 Claude Desktop Cowork 완전 정복',
   lang: 'ko-KR',
-  appearance: 'dark',
+  appearance: true,
   lastUpdated: true,
   ignoreDeadLinks: true,
 
