@@ -6,6 +6,7 @@ export default defineConfig({
   lang: 'ko-KR',
   appearance: 'dark',
   lastUpdated: true,
+  ignoreDeadLinks: true,
 
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],

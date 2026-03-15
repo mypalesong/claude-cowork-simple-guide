@@ -160,6 +160,8 @@ const progressPercent = computed(() => ((currentIndex.value + 1) / questions.len
 
 const score = computed(() => answers.value.filter(a => a.correct).length)
 
+const isLastQuestion = computed(() => currentIndex.value >= questions.length - 1)
+
 const level = computed(() => {
   const s = score.value
   if (s <= 3) return { badge: '🌱', name: '새싹', message: '시작이 반! 가이드를 읽어보세요' }
@@ -505,75 +507,66 @@ function getOptionClass(index) {
 </style>
 
 <div class="quiz-container">
-
-  <!-- Quiz in progress -->
-  <div v-if="!quizFinished">
-    <div class="quiz-progress-bar">
-      <div class="quiz-progress-fill" :style="{ width: progressPercent + '%' }"></div>
-    </div>
-    <div class="quiz-progress-text">{{ progress }}</div>
-
-    <div class="quiz-card" :key="currentIndex">
-      <span class="quiz-question-number">Q{{ currentQuestion.id }}</span>
-      <div class="quiz-question-text">{{ currentQuestion.question }}</div>
-
-      <div class="quiz-options">
-        <button
-          v-for="(option, i) in currentQuestion.options"
-          :key="i"
-          :class="getOptionClass(i)"
-          @click="selectAnswer(i)"
-        >
-          <span class="quiz-option-label">{{ ['A','B','C','D'][i] }}</span>
-          <span>{{ option }}</span>
-        </button>
-      </div>
-
-      <div
-        v-if="showFeedback"
-        class="quiz-feedback"
-        :class="selectedAnswer === currentQuestion.answer ? 'correct' : 'wrong'"
-      >
-        <div class="quiz-feedback-title">
-          {{ selectedAnswer === currentQuestion.answer ? '✅ 정답입니다!' : '❌ 아쉽네요!' }}
-        </div>
-        <div>{{ currentQuestion.explanation }}</div>
-      </div>
-
-      <button
-        v-if="showFeedback"
-        class="quiz-next-btn"
-        @click="nextQuestion"
-      >
-        {{ currentIndex < questions.length - 1 ? '다음 문제 →' : '결과 보기 →' }}
-      </button>
-    </div>
-  </div>
-
-  <!-- Results screen -->
-  <div v-else class="quiz-results">
-    <div class="quiz-card">
-      <div class="quiz-results-badge">{{ level.badge }}</div>
-      <div class="quiz-results-level">{{ level.name }}</div>
-      <div class="quiz-results-score">{{ score }} / {{ questions.length }}</div>
-      <div class="quiz-score-bar">
-        <div class="quiz-score-fill" :style="{ width: (score / questions.length * 100) + '%' }"></div>
-      </div>
-      <div class="quiz-results-message">{{ level.message }}</div>
-
-      <div v-if="wrongAnswerPages.length > 0" class="quiz-recommendations">
-        <h3>📚 이 부분을 더 공부해보세요</h3>
-        <div v-for="item in wrongAnswerPages" :key="item.page" class="quiz-rec-item">
-          <span>📖</span>
-          <span>{{ item.question }} → <a :href="item.page">{{ pageLabels[item.page] || item.page }}</a></span>
-        </div>
-      </div>
-
-      <div v-else class="quiz-perfect">
-        🎉 모든 문제를 맞히셨습니다! 완벽한 Cowork 마스터시네요.
-      </div>
-
-      <button class="quiz-reset-btn" @click="resetQuiz">🔄 다시 풀기</button>
-    </div>
-  </div>
+<!-- Quiz in progress -->
+<div v-if="!quizFinished">
+<div class="quiz-progress-bar">
+<div class="quiz-progress-fill" :style="{ width: progressPercent + '%' }"></div>
+</div>
+<div class="quiz-progress-text">{{ progress }}</div>
+<div class="quiz-card" :key="currentIndex">
+<span class="quiz-question-number">Q{{ currentQuestion.id }}</span>
+<div class="quiz-question-text">{{ currentQuestion.question }}</div>
+<div class="quiz-options">
+<button
+v-for="(option, i) in currentQuestion.options"
+:key="i"
+:class="getOptionClass(i)"
+@click="selectAnswer(i)"
+>
+<span class="quiz-option-label">{{ ['A','B','C','D'][i] }}</span>
+<span>{{ option }}</span>
+</button>
+</div>
+<div
+v-if="showFeedback"
+class="quiz-feedback"
+:class="selectedAnswer === currentQuestion.answer ? 'correct' : 'wrong'"
+>
+<div class="quiz-feedback-title">
+{{ selectedAnswer === currentQuestion.answer ? '&#x2705; 정답입니다!' : '&#x274C; 아쉽네요!' }}
+</div>
+<div>{{ currentQuestion.explanation }}</div>
+</div>
+<button
+v-if="showFeedback"
+class="quiz-next-btn"
+@click="nextQuestion"
+>
+{{ isLastQuestion ? '결과 보기 →' : '다음 문제 →' }}
+</button>
+</div>
+</div>
+<!-- Results screen -->
+<div v-else class="quiz-results">
+<div class="quiz-card">
+<div class="quiz-results-badge">{{ level.badge }}</div>
+<div class="quiz-results-level">{{ level.name }}</div>
+<div class="quiz-results-score">{{ score }} / {{ questions.length }}</div>
+<div class="quiz-score-bar">
+<div class="quiz-score-fill" :style="{ width: (score / questions.length * 100) + '%' }"></div>
+</div>
+<div class="quiz-results-message">{{ level.message }}</div>
+<div v-if="wrongAnswerPages.length > 0" class="quiz-recommendations">
+<h3>&#x1F4DA; 이 부분을 더 공부해보세요</h3>
+<div v-for="item in wrongAnswerPages" :key="item.page" class="quiz-rec-item">
+<span>&#x1F4D6;</span>
+<span>{{ item.question }} → <a :href="item.page">{{ pageLabels[item.page] || item.page }}</a></span>
+</div>
+</div>
+<div v-else class="quiz-perfect">
+&#x1F389; 모든 문제를 맞히셨습니다! 완벽한 Cowork 마스터시네요.
+</div>
+<button class="quiz-reset-btn" @click="resetQuiz">&#x1F504; 다시 풀기</button>
+</div>
+</div>
 </div>

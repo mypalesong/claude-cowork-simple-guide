@@ -925,171 +925,134 @@ function getCategoryColor(c) {
 
 <!-- Filters -->
 <div class="ta-filters">
-  <div class="ta-filter-row">
-    <span class="ta-filter-label">⏱️ 소요 시간</span>
-    <button
-      v-for="d in durations"
-      :key="d"
-      :class="['ta-filter-btn', { active: selectedDuration === d }]"
-      @click="selectedDuration = d"
-    >{{ d }}</button>
-  </div>
-  <div class="ta-filter-row">
-    <span class="ta-filter-label">👥 인원</span>
-    <button
-      v-for="p in peoples"
-      :key="p"
-      :class="['ta-filter-btn', { active: selectedPeople === p }]"
-      @click="selectedPeople = p"
-    >{{ p }}</button>
-  </div>
-  <div class="ta-filter-row">
-    <span class="ta-filter-label">🎈 분위기</span>
-    <button
-      v-for="c in categories"
-      :key="c"
-      :class="['ta-filter-btn', { active: selectedCategory === c }]"
-      @click="selectedCategory = c"
-    >{{ categoryLabels[c] }}</button>
-  </div>
-  <div class="ta-filter-count">
-    🎯 조건에 맞는 활동: <strong>{{ filteredActivities.length }}개</strong> / 전체 {{ activities.length }}개
-  </div>
+<div class="ta-filter-row">
+<span class="ta-filter-label">&#x23F1;&#xFE0F; 소요 시간</span>
+<button v-for="d in durations" :key="d" :class="['ta-filter-btn', { active: selectedDuration === d }]" @click="selectedDuration = d">{{ d }}</button>
+</div>
+<div class="ta-filter-row">
+<span class="ta-filter-label">&#x1F465; 인원</span>
+<button v-for="p in peoples" :key="p" :class="['ta-filter-btn', { active: selectedPeople === p }]" @click="selectedPeople = p">{{ p }}</button>
+</div>
+<div class="ta-filter-row">
+<span class="ta-filter-label">&#x1F388; 분위기</span>
+<button v-for="c in categories" :key="c" :class="['ta-filter-btn', { active: selectedCategory === c }]" @click="selectedCategory = c">{{ categoryLabels[c] }}</button>
+</div>
+<div class="ta-filter-count">
+&#x1F3AF; 조건에 맞는 활동: <strong>{{ filteredActivities.length }}개</strong> / 전체 {{ activities.length }}개
+</div>
 </div>
 
 <!-- Roll Button -->
 <div class="ta-roll-area">
-  <button :class="['ta-roll-btn', { rolling: isRolling }]" @click="rollDice" :disabled="isRolling">
-    <span :class="['ta-dice', { rolling: isRolling }]">🎲</span>
-    {{ isRolling ? '뽑는 중...' : '아이디어 뽑기!' }}
-  </button>
+<button :class="['ta-roll-btn', { rolling: isRolling }]" @click="rollDice" :disabled="isRolling">
+<span :class="['ta-dice', { rolling: isRolling }]">&#x1F3B2;</span>
+{{ isRolling ? '뽑는 중...' : '아이디어 뽑기!' }}
+</button>
 </div>
 
 <!-- No Results -->
 <div v-if="noResults" class="ta-no-results">
-  😅 조건에 맞는 활동이 없습니다. 필터를 조정해보세요!
+&#x1F605; 조건에 맞는 활동이 없습니다. 필터를 조정해보세요!
 </div>
 
 <!-- Picked Activity Card -->
 <div v-if="pickedActivity && !isRolling" class="ta-card-appear">
-  <div class="ta-card">
-    <div class="ta-card-header">
-      <div class="ta-card-emoji">{{ pickedActivity.emoji }}</div>
-      <div class="ta-card-title-area">
-        <div class="ta-card-title">{{ pickedActivity.title }}</div>
-        <div class="ta-card-subtitle">{{ pickedActivity.subtitle }}</div>
-      </div>
-    </div>
-    <div class="ta-card-body">
-      <div class="ta-meta">
-        <span class="ta-badge ta-badge-time">⏱️ {{ pickedActivity.duration }}</span>
-        <span class="ta-badge ta-badge-people">👥 {{ pickedActivity.people }}</span>
-        <span class="ta-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(pickedActivity.difficulty) }">📊 {{ pickedActivity.difficulty }}</span>
-        <span class="ta-badge ta-badge-category" :style="{ background: getCategoryColor(pickedActivity.category) }">{{ pickedActivity.category }}</span>
-      </div>
-
-      <div class="ta-section">
-        <div class="ta-section-title">🎒 준비물</div>
-        <ul class="ta-supplies-list">
-          <li v-for="s in pickedActivity.supplies" :key="s">{{ s }}</li>
-        </ul>
-      </div>
-
-      <div class="ta-section">
-        <div class="ta-section-title">📝 진행 방법</div>
-        <ol class="ta-steps-list">
-          <li v-for="(step, i) in pickedActivity.steps" :key="i">{{ step }}</li>
-        </ol>
-      </div>
-
-      <div class="ta-section">
-        <div class="ta-section-title">✨ 기대 효과</div>
-        <div class="ta-effect">{{ pickedActivity.effect }}</div>
-      </div>
-
-      <div class="ta-section">
-        <div class="ta-tip">{{ pickedActivity.tip }}</div>
-      </div>
-
-      <div class="ta-actions">
-        <button class="ta-action-btn" @click="rollDice">🎲 다시 뽑기</button>
-        <button :class="['ta-action-btn', 'primary', { copied }]" @click="copyPlan(pickedActivity)">
-          {{ copied ? '✅ 복사 완료!' : '📋 활동 계획서 복사' }}
-        </button>
-      </div>
-    </div>
-  </div>
+<div class="ta-card">
+<div class="ta-card-header">
+<div class="ta-card-emoji">{{ pickedActivity.emoji }}</div>
+<div class="ta-card-title-area">
+<div class="ta-card-title">{{ pickedActivity.title }}</div>
+<div class="ta-card-subtitle">{{ pickedActivity.subtitle }}</div>
+</div>
+</div>
+<div class="ta-card-body">
+<div class="ta-meta">
+<span class="ta-badge ta-badge-time">&#x23F1;&#xFE0F; {{ pickedActivity.duration }}</span>
+<span class="ta-badge ta-badge-people">&#x1F465; {{ pickedActivity.people }}</span>
+<span class="ta-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(pickedActivity.difficulty) }">&#x1F4CA; {{ pickedActivity.difficulty }}</span>
+<span class="ta-badge ta-badge-category" :style="{ background: getCategoryColor(pickedActivity.category) }">{{ pickedActivity.category }}</span>
+</div>
+<div class="ta-section">
+<div class="ta-section-title">&#x1F392; 준비물</div>
+<ul class="ta-supplies-list">
+<li v-for="s in pickedActivity.supplies" :key="s">{{ s }}</li>
+</ul>
+</div>
+<div class="ta-section">
+<div class="ta-section-title">&#x1F4DD; 진행 방법</div>
+<ol class="ta-steps-list">
+<li v-for="(step, i) in pickedActivity.steps" :key="i">{{ step }}</li>
+</ol>
+</div>
+<div class="ta-section">
+<div class="ta-section-title">&#x2728; 기대 효과</div>
+<div class="ta-effect">{{ pickedActivity.effect }}</div>
+</div>
+<div class="ta-section">
+<div class="ta-tip">{{ pickedActivity.tip }}</div>
+</div>
+<div class="ta-actions">
+<button class="ta-action-btn" @click="rollDice">&#x1F3B2; 다시 뽑기</button>
+<button :class="['ta-action-btn', 'primary', { copied }]" @click="copyPlan(pickedActivity)">
+{{ copied ? '&#x2705; 복사 완료!' : '&#x1F4CB; 활동 계획서 복사' }}
+</button>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Toggle All List -->
 <div class="ta-toggle-area">
-  <button class="ta-toggle-btn" @click="showAllList = !showAllList">
-    {{ showAllList ? '📂 전체 목록 접기' : '📂 전체 목록 보기' }}
-  </button>
+<button class="ta-toggle-btn" @click="showAllList = !showAllList">
+{{ showAllList ? '&#x1F4C2; 전체 목록 접기' : '&#x1F4C2; 전체 목록 보기' }}
+</button>
 </div>
 
 <!-- All Activities List -->
 <div v-if="showAllList">
-  <div class="ta-category-header">🎭 아이스브레이커 (5)</div>
-  <div class="ta-all-grid">
-    <div
-      v-for="a in activities.filter(x => x.category === '아이스브레이커')"
-      :key="a.id"
-      class="ta-mini-card"
-      @click="pickedActivity = a; showAllList = false"
-    >
-      <div class="ta-mini-header">
-        <span class="ta-mini-emoji">{{ a.emoji }}</span>
-        <span class="ta-mini-title">{{ a.title }}</span>
-      </div>
-      <div class="ta-mini-subtitle">{{ a.subtitle }}</div>
-      <div class="ta-mini-meta">
-        <span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
-        <span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
-        <span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ta-category-header">📖 학습 활동 (10)</div>
-  <div class="ta-all-grid">
-    <div
-      v-for="a in activities.filter(x => x.category === '학습')"
-      :key="a.id"
-      class="ta-mini-card"
-      @click="pickedActivity = a; showAllList = false"
-    >
-      <div class="ta-mini-header">
-        <span class="ta-mini-emoji">{{ a.emoji }}</span>
-        <span class="ta-mini-title">{{ a.title }}</span>
-      </div>
-      <div class="ta-mini-subtitle">{{ a.subtitle }}</div>
-      <div class="ta-mini-meta">
-        <span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
-        <span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
-        <span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ta-category-header">🏆 경쟁 게임 (5)</div>
-  <div class="ta-all-grid">
-    <div
-      v-for="a in activities.filter(x => x.category === '경쟁')"
-      :key="a.id"
-      class="ta-mini-card"
-      @click="pickedActivity = a; showAllList = false"
-    >
-      <div class="ta-mini-header">
-        <span class="ta-mini-emoji">{{ a.emoji }}</span>
-        <span class="ta-mini-title">{{ a.title }}</span>
-      </div>
-      <div class="ta-mini-subtitle">{{ a.subtitle }}</div>
-      <div class="ta-mini-meta">
-        <span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
-        <span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
-        <span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
-      </div>
-    </div>
-  </div>
+<div class="ta-category-header">&#x1F3AD; 아이스브레이커 (5)</div>
+<div class="ta-all-grid">
+<div v-for="a in activities.filter(x => x.category === '아이스브레이커')" :key="a.id" class="ta-mini-card" @click="pickedActivity = a; showAllList = false">
+<div class="ta-mini-header">
+<span class="ta-mini-emoji">{{ a.emoji }}</span>
+<span class="ta-mini-title">{{ a.title }}</span>
+</div>
+<div class="ta-mini-subtitle">{{ a.subtitle }}</div>
+<div class="ta-mini-meta">
+<span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
+<span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
+<span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
+</div>
+</div>
+</div>
+<div class="ta-category-header">&#x1F4D6; 학습 활동 (10)</div>
+<div class="ta-all-grid">
+<div v-for="a in activities.filter(x => x.category === '학습')" :key="a.id" class="ta-mini-card" @click="pickedActivity = a; showAllList = false">
+<div class="ta-mini-header">
+<span class="ta-mini-emoji">{{ a.emoji }}</span>
+<span class="ta-mini-title">{{ a.title }}</span>
+</div>
+<div class="ta-mini-subtitle">{{ a.subtitle }}</div>
+<div class="ta-mini-meta">
+<span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
+<span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
+<span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
+</div>
+</div>
+</div>
+<div class="ta-category-header">&#x1F3C6; 경쟁 게임 (5)</div>
+<div class="ta-all-grid">
+<div v-for="a in activities.filter(x => x.category === '경쟁')" :key="a.id" class="ta-mini-card" @click="pickedActivity = a; showAllList = false">
+<div class="ta-mini-header">
+<span class="ta-mini-emoji">{{ a.emoji }}</span>
+<span class="ta-mini-title">{{ a.title }}</span>
+</div>
+<div class="ta-mini-subtitle">{{ a.subtitle }}</div>
+<div class="ta-mini-meta">
+<span class="ta-mini-badge ta-badge-time">{{ a.duration }}</span>
+<span class="ta-mini-badge ta-badge-people">{{ a.people }}</span>
+<span class="ta-mini-badge ta-badge-difficulty" :style="{ background: getDifficultyColor(a.difficulty), color: 'white' }">{{ a.difficulty }}</span>
+</div>
+</div>
+</div>
 </div>
