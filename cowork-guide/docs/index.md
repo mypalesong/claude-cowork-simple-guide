@@ -2,11 +2,11 @@
 layout: home
 hero:
   name: Claude Cowork
-  text: AI 동료와 함께 일하는 가장 쉬운 방법
-  tagline: 이메일, 보고서, 데이터 분석, 회의록 — Claude가 옆자리 동료처럼 도와줍니다.
+  text: AI 동료와 함께 일하는 가장 스마트한 방법
+  tagline: 이메일, 보고서, 데이터 분석, 회의록 — Claude가 옆자리 동료처럼 도와줍니다. 코딩 없이, 누구나, 지금 바로.
   actions:
     - theme: brand
-      text: 지금 시작하기
+      text: 지금 시작하기 →
       link: /guide/overview
     - theme: alt
       text: 5분 체험하기
@@ -66,6 +66,35 @@ onMounted(() => {
       }, 30)
     }, 800 + delay)
   })
+
+  // Inject badge pill above hero name
+  setTimeout(() => {
+    const heroName = document.querySelector('.VPHero .name')
+    if (heroName && !document.querySelector('.hero-badge-pill')) {
+      const pill = document.createElement('div')
+      pill.className = 'hero-badge-pill'
+      pill.innerHTML = '<span class="pulse-dot"></span> Anthropic 공식 Claude Desktop 가이드'
+      heroName.parentElement.insertBefore(pill, heroName)
+    }
+
+    // Inject trust section after actions
+    const heroActions = document.querySelector('.VPHero .actions')
+    if (heroActions && !document.querySelector('.hero-trust')) {
+      const trust = document.createElement('div')
+      trust.className = 'hero-trust'
+      trust.innerHTML = `
+        <div class="hero-trust-label">이 가이드에 포함된 것들</div>
+        <div class="hero-trust-items">
+          <div class="hero-trust-item"><span class="hero-trust-icon">&#x1F4D6;</span> 26개 가이드</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">&#x1F4CB;</span> 52개 템플릿</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">&#x1F3AC;</span> 17개 영상</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">&#x1F9EA;</span> 실전 테스트</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">&#x1F512;</span> 보안 체크리스트</div>
+        </div>
+      `
+      heroActions.parentElement.appendChild(trust)
+    }
+  }, 100)
 })
 </script>
 
@@ -145,26 +174,26 @@ onMounted(() => {
 <h2 class="section-title">어디서부터 시작할까요?</h2>
 <p class="section-subtitle">당신의 상황에 맞는 코스를 선택하세요</p>
 <div class="paths-grid">
-<a href="/guide/overview" class="path-card path-quick">
+<a href="/claude-cowork-simple-guide/guide/overview" class="path-card path-quick">
 <div class="path-badge">&#x23F1; 10분</div>
 <div class="path-icon">&#x1F680;</div>
 <h3>빠르게 시작하기</h3>
 <p>핵심만 빠르게 훑고 바로 실전 투입하고 싶은 분</p>
-<div class="path-steps">Overview &#x2192; 첫 대화 &#x2192; 치트시트</div>
+<div class="path-steps">Overview → 첫 대화 → 치트시트</div>
 </a>
-<a href="/guide/overview" class="path-card path-learn">
+<a href="/claude-cowork-simple-guide/guide/overview" class="path-card path-learn">
 <div class="path-badge">&#x23F1; 1시간</div>
 <div class="path-icon">&#x1F4DA;</div>
 <h3>체계적으로 배우기</h3>
 <p>기초부터 차근차근 마스터하고 싶은 분</p>
-<div class="path-steps">Overview &#x2192; 작성법 &#x2192; 분석 &#x2192; 테스트</div>
+<div class="path-steps">Overview → 작성법 → 분석 → 테스트</div>
 </a>
-<a href="/test/advanced" class="path-card path-master">
+<a href="/claude-cowork-simple-guide/test/advanced" class="path-card path-master">
 <div class="path-badge">&#x23F1; 반나절</div>
 <div class="path-icon">&#x1F3C6;</div>
 <h3>마스터 되기</h3>
 <p>모든 기능을 완전 정복하고 팀에 전파하고 싶은 분</p>
-<div class="path-steps">전체 가이드 &#x2192; 워크플로우 &#x2192; 심화 퀴즈</div>
+<div class="path-steps">전체 가이드 → 워크플로우 → 심화 퀴즈</div>
 </a>
 </div>
 </section>
@@ -214,7 +243,7 @@ onMounted(() => {
 </div>
 
 <style>
-/* ═══ Landing Page Styles ═══ */
+/* ═══ Landing Page Styles — Enterprise Premium ═══ */
 .landing-sections {
   max-width: 960px;
   margin: 0 auto;
@@ -232,17 +261,17 @@ onMounted(() => {
 .section-title {
   text-align: center;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #2a2a2a, #E87040);
+  background: linear-gradient(135deg, #2a2a2a 0%, #E87040 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
 }
 .dark .section-title {
-  background: linear-gradient(135deg, #ececec, #E8845A);
+  background: linear-gradient(135deg, #ececec 0%, #E8845A 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -258,7 +287,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 4rem 0 3rem;
+  margin: 5rem 0 3.5rem;
 }
 .divider-line {
   flex: 1;
@@ -279,38 +308,46 @@ onMounted(() => {
 .stat-card {
   position: relative;
   text-align: center;
-  padding: 2rem 1rem 1.5rem;
+  padding: 2.25rem 1rem 1.75rem;
   border-radius: 20px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   animation: slideUp 0.6s ease backwards;
   animation-delay: var(--delay);
 }
 .stat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(232, 112, 64, 0.12);
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 60px rgba(232, 112, 64, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.dark .stat-card:hover {
+  box-shadow:
+    0 20px 60px rgba(232, 112, 64, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.3);
 }
 .stat-glow {
   position: absolute;
   top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: var(--accent);
-  opacity: 0.08;
-  filter: blur(30px);
-  transition: opacity 0.3s ease;
+  opacity: 0.06;
+  filter: blur(40px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .stat-card:hover .stat-glow {
   opacity: 0.15;
+  transform: translateX(-50%) scale(1.3);
 }
 .stat-number {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 900;
   color: var(--accent);
   line-height: 1;
@@ -338,12 +375,12 @@ onMounted(() => {
   border-radius: 16px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .comparison-card:hover {
-  transform: translateX(4px);
+  transform: translateX(6px);
   border-color: rgba(232, 112, 64, 0.3);
-  box-shadow: 0 8px 24px rgba(232, 112, 64, 0.08);
+  box-shadow: 0 8px 32px rgba(232, 112, 64, 0.08);
 }
 .comparison-task {
   font-weight: 700;
@@ -366,13 +403,15 @@ onMounted(() => {
 }
 .badge-before {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 6px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   background: rgba(196, 48, 82, 0.1);
   color: #c43052;
   margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .dark .badge-before {
   background: rgba(240, 128, 144, 0.12);
@@ -380,13 +419,15 @@ onMounted(() => {
 }
 .badge-after {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 6px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   background: rgba(13, 138, 94, 0.1);
   color: #0d8a5e;
   margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .dark .badge-after {
   background: rgba(92, 216, 168, 0.12);
@@ -407,10 +448,11 @@ onMounted(() => {
   text-align: center;
   padding: 2rem 1.5rem 1.5rem;
   border-radius: 20px;
-  border: 2px solid var(--vp-c-divider);
+  border: 1.5px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
   text-decoration: none !important;
   color: inherit !important;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
 }
 .path-card::before {
@@ -428,8 +470,11 @@ onMounted(() => {
 .path-master::before { background: linear-gradient(90deg, #3d9b58, #5ec478); }
 .path-card:hover::before { height: 6px; }
 .path-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+.dark .path-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 .path-quick:hover { border-color: rgba(232, 112, 64, 0.4); }
 .path-learn:hover { border-color: rgba(91, 140, 191, 0.4); }
@@ -437,7 +482,7 @@ onMounted(() => {
 .path-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 20px;
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-3);
@@ -478,25 +523,28 @@ onMounted(() => {
 }
 .highlight-card {
   text-align: center;
-  padding: 1.75rem 1.25rem;
-  border-radius: 16px;
+  padding: 2rem 1.25rem;
+  border-radius: 20px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .highlight-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: rgba(232, 112, 64, 0.3);
-  box-shadow: 0 12px 32px rgba(232, 112, 64, 0.08);
+  box-shadow: 0 16px 48px rgba(232, 112, 64, 0.08);
+}
+.dark .highlight-card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
 }
 .highlight-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 0.75rem;
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .highlight-card:hover .highlight-icon {
-  transform: scale(1.2) rotate(-5deg);
+  transform: scale(1.25) rotate(-5deg);
 }
 .highlight-card h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -522,7 +570,7 @@ onMounted(() => {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .paths-grid { grid-template-columns: 1fr; }
   .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-  .section-title { font-size: 1.5rem; }
+  .section-title { font-size: 1.6rem; }
   .stat-number { font-size: 2.2rem; }
   .comparison-row { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
   .arrow { transform: rotate(90deg); align-self: center; }

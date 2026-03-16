@@ -253,12 +253,20 @@ html {
 
 .VPSidebar .group .title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  color: var(--vp-c-text-3) !important;
-  margin-bottom: 4px;
+  letter-spacing: 1.8px;
+  font-weight: 800;
+  color: var(--vp-c-brand-1) !important;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+  opacity: 0.85;
+}
+
+.VPSidebar .group:first-child .title {
+  margin-top: 0;
 }
 
 /* Sidebar indentation */
@@ -275,14 +283,17 @@ html {
   transition: all 0.2s ease;
 }
 
-/* ═══════════════ HERO SECTION — Centered Modern ═══════════════ */
+/* ═══════════════ HERO SECTION — Enterprise Premium ═══════════════ */
 .VPHero {
-  padding: 80px 0 56px !important;
+  position: relative;
+  padding: 100px 0 72px !important;
+  z-index: 1;
+  overflow: visible;
 }
 
 .VPHero .container {
   text-align: center !important;
-  max-width: 800px !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
 }
 
@@ -293,30 +304,68 @@ html {
   text-align: center !important;
 }
 
+/* Hero name — large gradient with animated shimmer */
 .VPHero .name {
-  font-size: 4rem !important;
+  font-size: 4.5rem !important;
   font-weight: 900 !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.04em !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.05em !important;
+  position: relative;
 }
 
+.VPHero .name .clip {
+  background: linear-gradient(
+    135deg,
+    #E87040 0%,
+    #F5A880 25%,
+    #D4A574 50%,
+    #E87040 75%,
+    #C04A1A 100%
+  ) !important;
+  background-size: 200% 200% !important;
+  animation: heroShimmer 6s ease-in-out infinite !important;
+}
+
+@keyframes heroShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtitle text */
 .VPHero .text {
   color: var(--vp-c-text-1) !important;
-  font-size: 1.6rem !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.02em;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em;
+  margin-top: 8px !important;
+  opacity: 0;
+  animation: heroFadeUp 0.8s ease 0.2s forwards;
 }
 
+/* Tagline */
 .VPHero .tagline {
-  color: var(--vp-c-text-3) !important;
-  font-size: 1.1rem !important;
-  line-height: 1.7;
-  max-width: 520px;
-  margin: 0 auto;
+  color: var(--vp-c-text-2) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 8px auto 0 !important;
+  opacity: 0;
+  animation: heroFadeUp 0.8s ease 0.4s forwards;
 }
 
+/* Actions */
 .VPHero .actions {
   justify-content: center !important;
+  gap: 16px !important;
+  margin-top: 36px !important;
+  opacity: 0;
+  animation: heroFadeUp 0.8s ease 0.6s forwards;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Hero gradient background glow */
@@ -331,12 +380,12 @@ html {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 800px;
-  height: 500px;
+  max-width: 1200px;
+  height: 700px;
   background: radial-gradient(
     ellipse at 50% 0%,
-    rgba(232, 112, 64, 0.12) 0%,
-    rgba(212, 165, 116, 0.06) 40%,
+    rgba(232, 112, 64, 0.10) 0%,
+    rgba(212, 165, 116, 0.05) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -346,45 +395,158 @@ html {
 .dark .VPHome::before {
   background: radial-gradient(
     ellipse at 50% 0%,
-    rgba(232, 112, 64, 0.08) 0%,
-    rgba(232, 112, 64, 0.03) 40%,
+    rgba(232, 112, 64, 0.06) 0%,
+    rgba(232, 112, 64, 0.02) 40%,
     transparent 70%
   );
 }
 
-/* Hero action buttons */
+/* Hero action buttons — premium style */
 .VPHero .actions .action {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
 }
 
 .VPHero .actions .action:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .VPButton.brand {
-  border-radius: 10px !important;
-  font-weight: 650 !important;
-  padding: 10px 24px !important;
-  box-shadow: 0 4px 14px rgba(232, 112, 64, 0.25);
-  transition: all 0.2s ease !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  padding: 14px 32px !important;
+  background: linear-gradient(135deg, #E87040, #D05A2A) !important;
+  box-shadow:
+    0 4px 14px rgba(232, 112, 64, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.VPButton.brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.VPButton.brand:hover::before {
+  transform: translateX(100%);
 }
 
 .VPButton.brand:hover {
-  box-shadow: 0 6px 20px rgba(232, 112, 64, 0.35);
-  transform: translateY(-1px);
+  box-shadow:
+    0 8px 25px rgba(232, 112, 64, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px);
 }
 
 .VPButton.alt {
-  border-radius: 10px !important;
-  font-weight: 600 !important;
-  padding: 10px 24px !important;
-  border: 1px solid var(--vp-c-divider) !important;
-  transition: all 0.2s ease !important;
+  border-radius: 12px !important;
+  font-weight: 650 !important;
+  font-size: 0.95rem !important;
+  padding: 14px 32px !important;
+  border: 1.5px solid var(--vp-c-divider) !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.dark .VPButton.alt {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .VPButton.alt:hover {
   border-color: var(--vp-c-brand-1) !important;
   color: var(--vp-c-brand-1) !important;
+  background: rgba(232, 112, 64, 0.06) !important;
+  box-shadow: 0 4px 16px rgba(232, 112, 64, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+/* Badge pill above hero name */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  background: rgba(232, 112, 64, 0.08);
+  border: 1px solid rgba(232, 112, 64, 0.15);
+  color: var(--vp-c-brand-1);
+  animation: heroFadeUp 0.8s ease 0s forwards;
+  opacity: 0;
+}
+
+.hero-badge-pill .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E87040;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* Trust logos section */
+.hero-trust {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-trust-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--vp-c-text-3);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.hero-trust-items {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vp-c-text-3);
+  transition: color 0.2s ease;
+}
+
+.hero-trust-item:hover {
+  color: var(--vp-c-text-1);
+}
+
+.hero-trust-icon {
+  font-size: 1.1rem;
 }
 
 /* ═══════════════ FEATURE CARDS ═══════════════ */
@@ -940,16 +1102,34 @@ html {
 
 /* ═══════════════ MOBILE RESPONSIVE ═══════════════ */
 @media (max-width: 768px) {
+  .VPHero {
+    padding: 60px 0 48px !important;
+  }
+
   .VPHero .name {
-    font-size: 2.4rem !important;
+    font-size: 2.6rem !important;
   }
 
   .VPHero .text {
-    font-size: 1.2rem !important;
+    font-size: 1.25rem !important;
   }
 
   .VPHero .tagline {
     font-size: 0.95rem !important;
+  }
+
+  .hero-badge-pill {
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-trust-items {
+    gap: 16px;
+  }
+
+  .hero-trust-item {
+    font-size: 0.78rem;
   }
 
   .vp-doc h1 {
@@ -973,11 +1153,11 @@ html {
 
 @media (max-width: 480px) {
   .VPHero .name {
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
   }
 
   .VPHero .text {
-    font-size: 1.05rem !important;
+    font-size: 1rem !important;
   }
 
   .vp-doc table {

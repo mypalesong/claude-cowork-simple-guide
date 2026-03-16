@@ -1,6 +1,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import ParticleBackground from './ParticleBackground.vue'
+import HeroBackground from './HeroBackground.vue'
 import { useData } from 'vitepress'
 
 const { frontmatter } = useData()
@@ -8,5 +9,9 @@ const { frontmatter } = useData()
 
 <template>
   <ParticleBackground v-if="frontmatter.layout === 'home'" />
-  <DefaultTheme.Layout />
+  <DefaultTheme.Layout>
+    <template #home-hero-before>
+      <HeroBackground v-if="frontmatter.layout === 'home'" />
+    </template>
+  </DefaultTheme.Layout>
 </template>
