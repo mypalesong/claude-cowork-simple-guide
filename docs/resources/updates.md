@@ -112,6 +112,18 @@
   font-weight: 600;
 }
 
+.tl-card a {
+  color: #E87040;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tl-card a:hover {
+  text-decoration: underline;
+}
+
 .tl-future {
   border-left: 3px dashed #E87040;
 }
@@ -146,12 +158,12 @@
     <div class="tl-card">
       <h3>🚀 관리 기능 강화 & Office 통합 확장</h3>
       <ul>
-        <li><span class="tl-highlight">최종 사용자 초대 기능</span> — 관리자 개입 없이 팀원이 직접 동료 초대 가능 (SSO 조직 제외, 기본 비활성화)</li>
-        <li><span class="tl-highlight">코드 리뷰(Code Review)</span> — PR당 다중 에이전트 협업으로 심층 버그 탐지 (리서치 프리뷰, 관리자 설정 필요)</li>
-        <li><span class="tl-highlight">Excel & PowerPoint용 Claude 업데이트</span> — 두 앱 간 하나의 대화로 작업, 셀 읽기·수식 작성·슬라이드 편집 시 맥락 유지, Skills 기능 지원</li>
-        <li><span class="tl-highlight">예약된 작업(Scheduled Tasks)</span> — 일일 Slack 요약, 주간 보고서 등 반복 작업을 자연어로 설정하면 자동 실행</li>
-        <li><span class="tl-highlight">인라인 시각화</span> — 대화 중 차트·다이어그램 직접 생성, 이미지 복사·다운로드·아티팩트 저장 가능</li>
-        <li>신규 배포 옵션: Microsoft Foundry, Amazon Bedrock, Google Cloud Vertex AI</li>
+        <li><span class="tl-highlight">최종 사용자 초대 기능</span> — 관리자 개입 없이 팀원이 직접 동료 초대 가능 (SSO 조직 제외, 기본 비활성화) <a href="https://support.claude.com/en/articles/13443764-inviting-members-to-the-claude-console" target="_blank">→ 자세히 알아보기</a></li>
+        <li><span class="tl-highlight">코드 리뷰(Code Review)</span> — PR당 다중 에이전트 협업으로 심층 버그 탐지 (리서치 프리뷰, 관리자 설정 필요) <a href="https://claude.com/blog/code-review" target="_blank">→ 자세히 알아보기</a></li>
+        <li><span class="tl-highlight">Excel & PowerPoint용 Claude 업데이트</span> — 두 앱 간 하나의 대화로 작업, 셀 읽기·수식 작성·슬라이드 편집 시 맥락 유지, Skills 기능 지원 <a href="https://claude.com/blog/claude-excel-powerpoint-updates" target="_blank">→ 자세히 알아보기</a></li>
+        <li><span class="tl-highlight">예약된 작업(Scheduled Tasks)</span> — 일일 Slack 요약, 주간 보고서 등 반복 작업을 자연어로 설정하면 자동 실행 <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork" target="_blank">→ 자세히 알아보기</a></li>
+        <li><span class="tl-highlight">인라인 시각화</span> — 대화 중 차트·다이어그램 직접 생성, 이미지 복사·다운로드·아티팩트 저장 가능 <a href="https://claude.com/blog/claude-builds-visuals" target="_blank">→ 자세히 알아보기</a></li>
+        <li>신규 배포 옵션: <a href="https://www.anthropic.com/news/claude-in-microsoft-foundry" target="_blank">Microsoft Foundry</a>, <a href="https://claude.com/partners/amazon-bedrock" target="_blank">Amazon Bedrock</a>, Google Cloud Vertex AI</li>
       </ul>
     </div>
   </div>
