@@ -144,11 +144,14 @@
     <div class="tl-dot"></div>
     <span class="tl-badge">2026년 3월</span>
     <div class="tl-card">
-      <h3>🚀 대규모 확장 & 파트너십</h3>
+      <h3>🚀 관리 기능 강화 & Office 통합 확장</h3>
       <ul>
-        <li><span class="tl-highlight">Claude Opus 4.6 출시</span> — 1M 컨텍스트 윈도우로 대폭 확장</li>
-        <li><span class="tl-highlight">Microsoft Copilot Cowork 파트너십</span> 공식 발표</li>
-        <li><span class="tl-highlight">Agent Teams 기능 도입</span> — 여러 에이전트가 협업하여 복합 업무 처리</li>
+        <li><span class="tl-highlight">최종 사용자 초대 기능</span> — 관리자 개입 없이 팀원이 직접 동료 초대 가능 (SSO 조직 제외, 기본 비활성화)</li>
+        <li><span class="tl-highlight">코드 리뷰(Code Review)</span> — PR당 다중 에이전트 협업으로 심층 버그 탐지 (리서치 프리뷰, 관리자 설정 필요)</li>
+        <li><span class="tl-highlight">Excel & PowerPoint용 Claude 업데이트</span> — 두 앱 간 하나의 대화로 작업, 셀 읽기·수식 작성·슬라이드 편집 시 맥락 유지, Skills 기능 지원</li>
+        <li><span class="tl-highlight">예약된 작업(Scheduled Tasks)</span> — 일일 Slack 요약, 주간 보고서 등 반복 작업을 자연어로 설정하면 자동 실행</li>
+        <li><span class="tl-highlight">인라인 시각화</span> — 대화 중 차트·다이어그램 직접 생성, 이미지 복사·다운로드·아티팩트 저장 가능</li>
+        <li>신규 배포 옵션: Microsoft Foundry, Amazon Bedrock, Google Cloud Vertex AI</li>
       </ul>
     </div>
   </div>
